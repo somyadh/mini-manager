@@ -8,7 +8,7 @@ app = Flask(__name__)
 api = Api(app)
 
 app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://localhost/metro-dhruv'
+    'host': 'mongodb://host.docker.internal:27017/metro-dhruv'
 }
 
 initialize_db(app)
