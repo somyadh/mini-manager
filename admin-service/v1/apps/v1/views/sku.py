@@ -10,9 +10,16 @@ skuList_post_error = {
     "error raised": fields.String,
     "uri": fields.Url("skulist", absolute=True)
 }
+
 class SkuList(Resource):
     def get(self):
         sku = SKU.objects().to_json()
+        return Response(sku, mimetype="application/json", status=200)
+
+
+class Sku(Resource):
+    def get(self, name):
+        sku = SKU.objects(id=name).to_json()
         return Response(sku, mimetype="application/json", status=200)
 
     @marshal_with(skuList_post_fields, envelope="data")
